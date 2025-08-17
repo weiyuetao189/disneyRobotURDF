@@ -1,0 +1,190 @@
+<mujoco model="disney_robot_BDX">
+  <compiler angle="radian" meshdir="../meshes/"/>
+
+  <asset>
+    <mesh name="base_link" file="disneyRobotMeshes/base_link.STL"/>
+    <mesh name="leg_l1_link" file="disneyRobotMeshes/leg_l1_link.STL"/>
+    <mesh name="leg_l2_link" file="disneyRobotMeshes/leg_l2_link.STL"/>
+    <mesh name="leg_l3_link" file="disneyRobotMeshes/leg_l3_link.STL"/>
+    <mesh name="leg_l4_link" file="disneyRobotMeshes/leg_l4_link.STL"/>
+    <mesh name="leg_l5_link" file="disneyRobotMeshes/leg_l5_link.STL"/>
+    <mesh name="leg_r1_link" file="disneyRobotMeshes/leg_r1_link.STL"/>
+    <mesh name="leg_r2_link" file="disneyRobotMeshes/leg_r2_link.STL"/>
+    <mesh name="leg_r3_link" file="disneyRobotMeshes/leg_r3_link.STL"/>
+    <mesh name="leg_r4_link" file="disneyRobotMeshes/leg_r4_link.STL"/>
+    <mesh name="leg_r5_link" file="disneyRobotMeshes/leg_r5_link.STL"/>
+    <mesh name="neck_n1_link" file="disneyRobotMeshes/neck_n1_link.STL"/>
+    <mesh name="neck_n2_link" file="disneyRobotMeshes/neck_n2_link.STL"/>
+    <mesh name="neck_n3_link" file="disneyRobotMeshes/neck_n3_link.STL"/>
+    <mesh name="neck_n4_link" file="disneyRobotMeshes/neck_n4_link.STL"/>
+  </asset>
+  <default>
+    <default class='Unitree_A1_motor'>
+        <joint damping="0.015" frictionloss="0.023" armature="0.011"/>
+    </default> 
+    <default class='Unitree_Go1_motor'>
+        <joint damping="0.005" frictionloss="0.016" armature="0.0043"/>
+    </default> 
+    <default class='Dynamixel_XH540_motor'>
+        <joint damping="0.002" frictionloss="0.009" armature="0.0058"/>
+    </default> 
+  </default>
+  <worldbody>
+    <body name="base_link" pos="0 0 0.405">
+      <freejoint/>
+      <site name="imu" pos="0 0 0" />
+      <inertial pos="0.00585397 0.00052958 -0.0493915" quat="0.5 0.5 0.5 0.5" mass="5.86011" diaginertia="0.0687285 0.0601536 0.0280133"/>
+      <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="base_link"/>
+      <!-- <geom size="0.1 0.075 0.115" pos="0.05 0 -0.08" type="box" rgba="1 0 0 01"/> -->
+      <geom type="mesh" rgba="1 1 1 1" mesh="base_link"/>
+      <site name="fixedPoint1" pos="0.075 0.102 -0.021" rgba="0 .8 0 1"/>
+      <site name="fixedPoint2" pos="-0.031 0.102 -0.021" rgba="0 .8 0 1"/>
+      <site name="fixedPoint3" pos="0.075 -0.102 -0.021" rgba="0 .8 0 1"/>
+      <site name="fixedPoint4" pos="-0.031 -0.102 -0.021" rgba="0 .8 0 1"/>
+      <body name="leg_l1_link" pos="0 0.04625 -0.0544">
+        <inertial pos="0.00139393 0.0055533 -0.0527677" mass="0.711903" diaginertia="0.00083126 0.0005581 0.00049273"/>
+        <joint name="leg_l1_joint" pos="0 0 0" axis="0 0 1" range="-0.3491 0.4363" actuatorfrcrange="-23.7 23.7" class="Unitree_Go1_motor"/>
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="leg_l1_link"/>
+        <body name="leg_l2_link" pos="0.023 0.0055 -0.0555">
+          <inertial pos="0.00362895 0.0320986 -0.00027321" quat="0.707107 0.707107 0 0" mass="0.10129" diaginertia="0.00011358 9.523e-05 4.735e-05"/>
+          <joint name="leg_l2_joint" pos="0 0 0" axis="1 0 0" range="-0.3491 0.2618" actuatorfrcrange="-33.6 33.6" class="Unitree_A1_motor"/>
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="leg_l2_link"/>
+          <body name="leg_l3_link" pos="0 0.06825 0" quat="0.941222 0 0.337787 0">
+            <inertial pos="-0.00187632 0.0196858 -0.0594945" quat="0.707107 0 0 0.707107" mass="1.58945" diaginertia="0.00704904 0.00636697 0.00128783"/>
+            <joint name="leg_l3_joint" pos="0 0 0" axis="0 1 0" range="-0.4363 1.4835" actuatorfrcrange="-33.6 33.6" class="Unitree_A1_motor"/>
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="leg_l3_link"/>
+            <body name="leg_l4_link" pos="0 0 -0.12" quat="0.819152 0 -0.573576 0">
+              <inertial pos="0.00393541 -0.0144339 -0.11882" quat="0.707107 0 0 0.707107" mass="0.839578" diaginertia="0.00237595 0.00201536 0.00052528"/>
+              <joint name="leg_l4_joint" pos="0 0 0" axis="0 1 0" range="-1.1868 0.9599" actuatorfrcrange="-33.6 33.6" class="Unitree_A1_motor"/>
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="leg_l4_link"/>
+              <body name="leg_l5_link" pos="0 0 -0.14" quat="0.965926 0 0.258819 0">
+                <inertial pos="0.0336733 -0.00523332 -0.0455182" quat="0.5 0.5 0.5 0.5" mass="0.407507" diaginertia="0.0013698 0.00118352 0.00028033"/>
+                <joint name="leg_l5_joint" pos="0 0 0" axis="0 1 0" range="-1.8326 0.87266" actuatorfrcrange="-23.7 23.7" class="Unitree_Go1_motor"/>
+                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="leg_l5_link"/>
+                <geom type="mesh" rgba="1 1 1 1" mesh="leg_l5_link"/>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="leg_r1_link" pos="0 -0.04625 -0.0544">
+        <inertial pos="0.00139393 -0.0055533 -0.0527677" mass="0.711903" diaginertia="0.00083126 0.0005581 0.00049273"/>
+        <joint name="leg_r1_joint" pos="0 0 0" axis="0 0 1" range="-0.4363 0.3491" actuatorfrcrange="-23.7 23.7" class="Unitree_Go1_motor"/>
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="leg_r1_link"/>
+        <body name="leg_r2_link" pos="0.023 -0.0055 -0.0555">
+          <inertial pos="0.00362895 -0.0320986 -0.00027321" quat="0.707107 0.707107 0 0" mass="0.10129" diaginertia="0.00011358 9.523e-05 4.735e-05"/>
+          <joint name="leg_r2_joint" pos="0 0 0" axis="1 0 0" range="-0.2618 0.3491" actuatorfrcrange="-33.6 33.6" class="Unitree_A1_motor"/>
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="leg_r2_link"/>
+          <body name="leg_r3_link" pos="0 -0.06825 0" quat="0.941222 0 0.337787 0">
+            <inertial pos="-0.00187632 -0.0196858 -0.0594945" quat="0.707107 0 0 0.707107" mass="1.58945" diaginertia="0.00704904 0.00636697 0.00128783"/>
+            <joint name="leg_r3_joint" pos="0 0 0" axis="0 1 0" range="-0.4363 1.4835" actuatorfrcrange="-33.6 33.6" class="Unitree_A1_motor"/>
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="leg_r3_link"/>
+            <body name="leg_r4_link" pos="0 0 -0.12" quat="0.819152 0 -0.573576 0">
+              <inertial pos="0.00393541 0.0144339 -0.11882" quat="0.707107 0 0 0.707107" mass="0.839578" diaginertia="0.00237595 0.00201536 0.00052528"/>
+              <joint name="leg_r4_joint" pos="0 0 0" axis="0 1 0" range="-1.1868 0.9599" actuatorfrcrange="-33.6 33.6" class="Unitree_A1_motor"/>
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="leg_r4_link"/>
+              <body name="leg_r5_link" pos="0 0 -0.14" quat="0.965926 0 0.258819 0">
+                <inertial pos="0.0336733 0.00523332 -0.0455182" quat="0.5 0.5 0.5 0.5" mass="0.407507" diaginertia="0.0013698 0.00118352 0.00028033"/>
+                <joint name="leg_r5_joint" pos="0 0 0" axis="0 1 0" range="-1.8326 0.87266" actuatorfrcrange="-23.7 23.7" class="Unitree_Go1_motor"/>
+                <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="leg_r5_link"/>
+                <geom type="mesh" rgba="1 1 1 1" mesh="leg_r5_link"/>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="neck_n1_link" pos="0.095 0 0.00845" quat="0.923879 0 -0.382684 0">
+        <inertial pos="0.0318734 -0.00244162 0.0845068" mass="0.288641" diaginertia="0.00045759 0.00043988 9.626e-05"/>
+        <joint name="neck_n1_joint" pos="0 0 0" axis="0 1 0" range="-0.7854 0.7854" actuatorfrcrange="-23.7 23.7" class="Unitree_Go1_motor"/>
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="neck_n1_link"/>
+        <body name="neck_n2_link" pos="0.03595 0 0.12324" quat="0.923879 0 0.382684 0">
+          <inertial pos="-0.00975008 0.00059107 0.0378122" mass="0.0617134" diaginertia="6.38e-05 5.204e-05 2.914e-05"/>
+          <joint name="neck_n2_joint" pos="0 0 0" axis="0 1 0" range="-1.3963 0.7854" actuatorfrcrange="-4.8 4.8" class="Dynamixel_XH540_motor"/>
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="neck_n2_link"/>
+          <body name="neck_n3_link" pos="0 0 0.051">
+            <inertial pos="0.0151117 0 0.00674962" quat="0 0.707107 0 0.707107" mass="0.239182" diaginertia="0.00017279 0.00013447 0.00010945"/>
+            <joint name="neck_n3_joint" pos="0 0 0" axis="0 0 1" range="-0.9599 0.9599" actuatorfrcrange="-4.8 4.8" class="Dynamixel_XH540_motor"/>
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="neck_n3_link"/>
+            <body name="neck_n4_link">
+              <inertial pos="-0.00227195 0.00102951 0.0158434" quat="0 0.707107 0 0.707107" mass="0.835081" diaginertia="0.0113963 0.00789767 0.00433186"/>
+              <joint name="neck_n4_joint" pos="0 0 0" axis="1 0 0" range="-0.5236 0.5236" actuatorfrcrange="-4.8 4.8" class="Dynamixel_XH540_motor"/>
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="1 1 1 1" mesh="neck_n4_link"/>
+              <geom size="0.15 0.085 0.02" pos="-0.035 0 0.011" type="box" rgba="1 0 0 0.1"/>
+              <!-- <geom type="mesh" rgba="1 1 1 1" mesh="neck_n4_link"/> -->
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+  <actuator>
+    <motor gear="1" joint="leg_l1_joint" name="leg_l1_joint_motor" ctrllimited="true" ctrlrange="-23.7 23.7"/>
+    <motor gear="1" joint="leg_l2_joint" name="leg_l2_joint_motor" ctrllimited="true" ctrlrange="-33.5 33.5"/>
+    <motor gear="1" joint="leg_l3_joint" name="leg_l3_joint_motor" ctrllimited="true" ctrlrange="-33.5 33.5"/>
+    <motor gear="1" joint="leg_l4_joint" name="leg_l4_joint_motor" ctrllimited="true" ctrlrange="-33.5 33.5"/>
+    <motor gear="1" joint="leg_l5_joint" name="leg_l5_joint_motor" ctrllimited="true" ctrlrange="-23.7 23.7"/>
+    <motor gear="1" joint="leg_r1_joint" name="leg_r1_joint_motor" ctrllimited="true" ctrlrange="-23.7 23.7"/>
+    <motor gear="1" joint="leg_r2_joint" name="leg_r2_joint_motor" ctrllimited="true" ctrlrange="-33.5 33.5"/>
+    <motor gear="1" joint="leg_r3_joint" name="leg_r3_joint_motor" ctrllimited="true" ctrlrange="-33.5 33.5"/>
+    <motor gear="1" joint="leg_r4_joint" name="leg_r4_joint_motor" ctrllimited="true" ctrlrange="-33.5 33.5"/>
+    <motor gear="1" joint="leg_r5_joint" name="leg_r5_joint_motor" ctrllimited="true" ctrlrange="-23.7 23.7"/>
+    <motor gear="1" joint="neck_n1_joint" name="neck_n1_joint_motor" ctrllimited="true" ctrlrange="-3.14 3.14"/>
+    <motor gear="1" joint="neck_n2_joint" name="neck_n2_joint_motor" ctrllimited="true" ctrlrange="-3.14 3.14"/>
+    <motor gear="1" joint="neck_n3_joint" name="neck_n3_joint_motor" ctrllimited="true" ctrlrange="-3.14 3.14"/>
+    <motor gear="1" joint="neck_n4_joint" name="neck_n4_joint_motor" ctrllimited="true" ctrlrange="-3.14 3.14"/>
+  </actuator>
+  <sensor>
+    <actuatorpos name='leg_l1_joint_p'  actuator='leg_l1_joint_motor'/>
+    <actuatorpos name='leg_l2_joint_p'  actuator='leg_l2_joint_motor'/>
+    <actuatorpos name='leg_l3_joint_p'  actuator='leg_l3_joint_motor'/>
+    <actuatorpos name='leg_l4_joint_p'  actuator='leg_l4_joint_motor'/>
+    <actuatorpos name='leg_l5_joint_p'  actuator='leg_l5_joint_motor'/>
+    <actuatorpos name='leg_r1_joint_p'  actuator='leg_r1_joint_motor'/>
+    <actuatorpos name='leg_r2_joint_p'  actuator='leg_r2_joint_motor'/>
+    <actuatorpos name='leg_r3_joint_p'  actuator='leg_r3_joint_motor'/>
+    <actuatorpos name='leg_r4_joint_p'  actuator='leg_r4_joint_motor'/>
+    <actuatorpos name='leg_r5_joint_p'  actuator='leg_r5_joint_motor'/>
+    <actuatorpos name='neck_n1_joint_p'  actuator='neck_n1_joint_motor'/>
+    <actuatorpos name='neck_n2_joint_p'  actuator='neck_n2_joint_motor'/>
+    <actuatorpos name='neck_n3_joint_p'  actuator='neck_n3_joint_motor'/>
+    <actuatorpos name='neck_n4_joint_p'  actuator='neck_n4_joint_motor'/>
+    
+    <actuatorvel name='leg_l1_joint_v'  actuator='leg_l1_joint_motor'/>
+    <actuatorvel name='leg_l2_joint_v'  actuator='leg_l2_joint_motor'/>
+    <actuatorvel name='leg_l3_joint_v'  actuator='leg_l3_joint_motor'/>
+    <actuatorvel name='leg_l4_joint_v'  actuator='leg_l4_joint_motor'/>
+    <actuatorvel name='leg_l5_joint_v'  actuator='leg_l5_joint_motor'/>
+    <actuatorvel name='leg_r1_joint_v'  actuator='leg_r1_joint_motor'/>
+    <actuatorvel name='leg_r2_joint_v'  actuator='leg_r2_joint_motor'/>
+    <actuatorvel name='leg_r3_joint_v'  actuator='leg_r3_joint_motor'/>
+    <actuatorvel name='leg_r4_joint_v'  actuator='leg_r4_joint_motor'/>
+    <actuatorvel name='leg_r5_joint_v'  actuator='leg_r5_joint_motor'/>
+    <actuatorvel name='neck_n1_joint_v'  actuator='neck_n1_joint_motor'/>
+    <actuatorvel name='neck_n2_joint_v'  actuator='neck_n2_joint_motor'/>
+    <actuatorvel name='neck_n3_joint_v'  actuator='neck_n3_joint_motor'/>
+    <actuatorvel name='neck_n4_joint_v'  actuator='neck_n4_joint_motor'/>
+
+    <actuatorfrc name='leg_l1_joint_f'  actuator='leg_l1_joint_motor'/>
+    <actuatorfrc name='leg_l2_joint_f'  actuator='leg_l2_joint_motor'/>
+    <actuatorfrc name='leg_l3_joint_f'  actuator='leg_l3_joint_motor'/>
+    <actuatorfrc name='leg_l4_joint_f'  actuator='leg_l4_joint_motor'/>
+    <actuatorfrc name='leg_l5_joint_f'  actuator='leg_l5_joint_motor'/>
+    <actuatorfrc name='leg_r1_joint_f'  actuator='leg_r1_joint_motor'/>
+    <actuatorfrc name='leg_r2_joint_f'  actuator='leg_r2_joint_motor'/>
+    <actuatorfrc name='leg_r3_joint_f'  actuator='leg_r3_joint_motor'/>
+    <actuatorfrc name='leg_r4_joint_f'  actuator='leg_r4_joint_motor'/>
+    <actuatorfrc name='leg_r5_joint_f'  actuator='leg_r5_joint_motor'/>
+    <actuatorfrc name='neck_n1_joint_f'  actuator='neck_n1_joint_motor'/>
+    <actuatorfrc name='neck_n2_joint_f'  actuator='neck_n2_joint_motor'/>
+    <actuatorfrc name='neck_n3_joint_f'  actuator='neck_n3_joint_motor'/>
+    <actuatorfrc name='neck_n4_joint_f'  actuator='neck_n4_joint_motor'/>
+
+    <framequat name='orientation' objtype='site' objname='imu'/>
+    <framepos name='position' objtype='site' objname='imu'/>
+    <gyro name='angular-velocity' site='imu'/>
+    <velocimeter name='linear-velocity' site='imu'/>
+    <accelerometer name='linear-acceleration' site='imu'/>
+    <magnetometer name='magnetometer' site='imu'/>
+
+  </sensor>
+</mujoco>
